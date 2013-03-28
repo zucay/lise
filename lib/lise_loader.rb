@@ -5,7 +5,7 @@ require 'nokogiri'
 require 'pp'
 class LiseLoader
   SEASON = %w[A1 A2 B1 B2 C1 C2 SP1 SP2 SP3]
-  COLOR = %w[smn pnk bgr ppl ylw ybk lim gre gre] # SP3はグレーで良い？
+  COLOR = %w[smn pnk bgr ppl ylw ybk gre lim fgr] # specified at 2013-03-23 Mail
   def parse_xls(file)
     out = []
     mx = MyMatrix.new(file, {sheet:'シーズナリ設定' })
@@ -53,8 +53,18 @@ class LiseLoader
         next
       end
     end
+    builder.remove_attribute("//td", 'id')
     out_path = File.basename(file, '.*').gsub(/.*?_([a-zA-Z0-9_]+)$/, '\1.html')
     builder.to_file(out_path)
+  end
+  def main_dir(dir, template)
+    Dir.entries(dir).each do |ele|
+      if ele =~ /\.xls$/
+        file = File.expand_path(ele, dir)
+        p file
+        main(file, template)
+      end
+    end
   end
 end
 class HTMLBuilder
@@ -66,6 +76,11 @@ class HTMLBuilder
   def set_attribute(q, attr, value_str)
     ele = @doc.at_xpath(q)
     ele[attr] = value_str if ele
+  end
+  def remove_attribute(q, attr)
+    @doc.xpath(q).each do |ele|
+      ele.delete(attr)
+    end
   end
   def set_content(q, value_str)
     ele = @doc.at_xpath(q)
@@ -80,8 +95,10 @@ end
 
 
 if __FILE__ == $0
+=begin
   ARGV.each do |file|
     LiseLoader.new.main(file, '/Users/zuka/Dropbox/work/130317_LMC/input/sample_price.html')
   end
-
+=end
+  LiseLoader.new.main_dir(ARGV[0], '/Users/zuka/Dropbox/work/130317_LMC/input/sample_price.html')
 end
