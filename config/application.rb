@@ -64,5 +64,10 @@ module Lise
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # only this application
+    template_name = 'sample_price.html'
+    config.template_unix_path = (Rails.root + 'public' + template_name).to_s
+    config.template_path = (Pathname('/') + template_name).to_s
   end
 end

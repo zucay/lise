@@ -15,7 +15,7 @@
 development:
   adapter: sqlite3
   encoding: unicode
-  database: lise_development
+  database: db/lise_development.sqlite3
   pool: 5
   username: lise
 

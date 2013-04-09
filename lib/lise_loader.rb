@@ -100,5 +100,5 @@ if __FILE__ == $0
     LiseLoader.new.main(file, '/Users/zuka/Dropbox/work/130317_LMC/input/sample_price.html')
   end
 =end
-  LiseLoader.new.main_dir(ARGV[0], '/Users/zuka/Dropbox/work/130317_LMC/input/sample_price.html')
+  LiseLoader.new.main_dir(ARGV[0], 'app/templates/sample_price2.html')
 end
