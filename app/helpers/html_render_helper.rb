@@ -1,0 +1,2 @@
+module HtmlRenderHelper
+end
