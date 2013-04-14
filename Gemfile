@@ -46,3 +46,5 @@ gem "meta_search",    '>= 1.1.0.pre'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+
+gem 'simple_form'
