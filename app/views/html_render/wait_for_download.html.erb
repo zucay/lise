@@ -1,0 +1,8 @@
+<h1> Wait for Download</h1>
+
+<div class="progress progress-striped active">
+	<div class="bar" style="width: 30%"></div>
+</div>
+<%= button_to('Download HTMLs', '/', :disabled => true, :class => 'btn btn-large btn-primary disabled')  %>
+
+<%= button_to('TEST', {:action => :update_progress}, {:remote => true, :class => 'btn btn-large btn-primary'})  %>

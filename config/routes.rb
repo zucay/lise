@@ -3,8 +3,10 @@ Lise::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   match "html_render" => "html_render#show"
-    
-
+  match "html_render/load_files" => "html_render#load_files"
+  match "html_render/wait_for_download" => "html_render#wait_for_download"
+  match "html_render/update_progress" => "html_render#update_progress"
+  root :to => "html_render#show"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -54,7 +56,7 @@ Lise::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "admin/dashboard#index"
+
 
   # See how all your routes lay out with "rake routes"
 

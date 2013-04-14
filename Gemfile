@@ -7,8 +7,6 @@ gem 'rails', '3.2.9'
 
 gem 'pg'
 gem 'sqlite3'
-gem 'better_errors'
-gem 'binding_of_caller' # for better_errors
 
 
 # Gems used only for assets and not required
@@ -47,4 +45,11 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
+gem 'jquery-rails'
+
 gem 'simple_form'
+
+group :development do
+  gem 'better_errors'
+	gem 'binding_of_caller'
+end
