@@ -1,8 +1,12 @@
-<h1> Wait for Download</h1>
+<h1 style="display:inline;"> Wait for Download</h1>
+<h2><div id="num" style="display:inline;">0</div> / 
+<div style="display:inline;"><%= @whole_num %></div></h2>
 
+<%= @dir_path %>
 <div class="progress progress-striped active">
 	<div class="bar" style="width: 30%"></div>
 </div>
-<%= button_to('Download HTMLs', '/', :disabled => true, :class => 'btn btn-large btn-primary disabled')  %>
+
+<%= button_to('Download HTMLs', '/', :disabled => true, :class => 'btn btn-large btn-primary disabled', :id => 'download-btn')  %>
 
 <%= button_to('TEST', {:action => :update_progress}, {:remote => true, :class => 'btn btn-large btn-primary'})  %>
