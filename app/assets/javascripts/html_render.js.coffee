@@ -6,9 +6,7 @@
 whole_num = $('#whole-num').html()
 setInterval(->
   stat = $('#download-btn').attr('disabled')
-  alert(stat)
   if(stat == 'disabled')
-#    location.relaod()
     $.post('/html_render/update_progress',{
       whole_num: whole_num
       dir_path: 'foo/bar'

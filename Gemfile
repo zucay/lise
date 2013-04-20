@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -45,10 +45,18 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
+#javascript
 gem 'jquery-rails'
 
+#input
 gem 'simple_form'
 
+# for loader
+gem 'mymatrix'
+gem 'nokogiri'
+gem 'zipruby'
+
+gem 'delayed_job_active_record'
 group :development do
   gem 'better_errors'
 	gem 'binding_of_caller'

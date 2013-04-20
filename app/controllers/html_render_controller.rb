@@ -4,7 +4,7 @@ class HtmlRenderController < ApplicationController
   end
   def load_files
     dir_name = Time.now.to_s(:number)
-    dir_path = Pathname(Rails.root) + 'tmp' + 'uploads' + dir_name
+    dir_path = Pathname(Rails.root) + 'tmp' + 'html_render' + dir_name
     FileUtils.mkdir_p(dir_path) unless FileTest.exist?(dir_path)
 
     pathnames = params[:file][:names].map do |fi|
@@ -15,10 +15,13 @@ class HtmlRenderController < ApplicationController
       end
       path
     end
-    #Session.delay.load(params[:id], pathnames)
-    flash[:notice] = "FILE_LOAD is queued."
+    out_dir_path = Pathname(Rails.root) + 'tmp' + 'html_render' + (dir_name + '_html')
+    LiseLoader.exec_with_dir_and_zip(dir_path, Lise::Application.config.template_unix_path, out_dir_path)
+    flash[:notice] = "HTML files are going to be created"
     redirect_to(:action => :wait_for_download,
-                :dir_path => dir_path, :whole_num => pathnames.size
+                :dir_path => dir_path, 
+                :whole_num => pathnames.size,
+                :out_dir_path => out_dir_path
                 )
   end
   def wait_for_download
@@ -31,5 +34,11 @@ class HtmlRenderController < ApplicationController
     @num = rand(@whole_num)
 
     @progress = (100 * @num/@whole_num).to_i
+    #if(@progress == 100)
+    if(true)
+      # download
+      redirect_to('show')
+    end
   end
+
 end
