@@ -1,12 +1,16 @@
 <br><br>
-<h1>Load .xls Files</h1>
+<h1>Load .xls Files</h1></li>
 <h4>教習所のxlsファイルをアップロードしてください</h4>
 
 <ul>
+
+
+	<li>ファイル名は、xxxx_<b>aaa</b>.xlsにしてください。<b>aaa</b>.htmlというファイルが生成されます。</li>
 	<li>Firefox/Chromeを使えば、一括アップロードが可能です</li>
 	<li>.xlsxファイル形式には非対応です。<b>.xls</b>ファイルを指定してください</li>
 </ul>
 <pre>
+
 <%= form_tag('/html_render/load_files', :method => :post, :multipart => true) do %>
 	<%= file_field :file, 'names', :multiple => 'multiple' %>
 	<%= submit_tag('Load_Files', :class => 'btn btn-large btn-primary') %>
