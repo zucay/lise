@@ -1,3 +1,9 @@
 $("div.bar").attr("style", "width: <%= @progress %>%");
 $("div#num").html("<%= @num %>");
 
+<% if @num >= @whole_num %>
+   $("input#download-btn").attr({'class': "btn btn-primary btn-large"});
+   $("input#download-btn").removeAttr('disabled');
+<% end  %>
+
+

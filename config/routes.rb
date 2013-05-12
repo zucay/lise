@@ -6,6 +6,7 @@ Lise::Application.routes.draw do
   match "html_render/load_files" => "html_render#load_files"
   match "html_render/wait_for_download" => "html_render#wait_for_download"
   match "html_render/update_progress" => "html_render#update_progress"
+  match "html_render/download" => "html_render#download", :as => :download
   root :to => "html_render#show"
   # The priority is based upon order of creation:
   # first created -> highest priority.

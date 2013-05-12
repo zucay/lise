@@ -4,11 +4,13 @@
 #alert($('.bar').attr('style'))
 
 whole_num = $('#whole-num').html()
-setInterval(->
+html_dir = $('#html_dir').text()
+
+setInterval(=>
   stat = $('#download-btn').attr('disabled')
   if(stat == 'disabled')
     $.post('/html_render/update_progress',{
       whole_num: whole_num
-      dir_path: 'foo/bar'
+      html_dir: html_dir
     })
-, 2000);
+, 4000);

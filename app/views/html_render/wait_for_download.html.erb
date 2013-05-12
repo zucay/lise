@@ -1,11 +1,11 @@
 <h1 style="display:inline;"> Wait for Download</h1>
 <h2><div id="num" style="display:inline;">0</div> / 
-<div id="whole-num" style="display:inline;"><%= @whole_num %></div></h2>
+<div id="whole-num" style="display:inline;"><%= @whole_num.to_i + 1 %></div></h2>
 
 下記フォルダにhtmlファイルが生成されています...
-<%= @dir_path + "_html" %>
+<div id="html_dir"><%= @html_dir %></div>
 <div class="progress progress-striped active">
-	<div class="bar" style="width: 30%"></div>
+	<div class="bar" style="width: 0%"></div>
 </div>
 
-<%= button_to('Download HTMLs', '/', :disabled => true, :class => 'btn btn-large disabled', :id => 'download-btn')  %>
+<%= button_to('Download HTMLs', download_path(:zip_path => @zip_path), {:disabled => true, :class => 'btn btn-large disabled', :id => 'download-btn'})  %>
