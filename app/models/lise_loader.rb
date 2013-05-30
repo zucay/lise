@@ -58,7 +58,7 @@ class LiseLoader
       end
     end
     builder.remove_attribute("//td", 'id')
-    out_file_name = File.basename(file, '.*').gsub(/.*?_([a-zA-Z0-9_]+)$/, '\1.html')
+    out_file_name = File.basename(file, '.*').gsub(/.*?_([a-zA-Z0-9_]+)$/, '\1') + '.html'
     if(out_dir)
       FileUtils.mkdir_p(out_dir.to_s)
     end
