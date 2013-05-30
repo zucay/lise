@@ -1,8 +1,9 @@
 class HTMLBuilder
-  def initialize(template_file)
-    f = File.open(template_file)
-    @doc = Nokogiri::HTML(f)
-    f.close
+  def initialize(template_file, opts={})
+    opts[:enc] ||= nil
+    f = NKF.nkf("--utf8", File.open(template_file).read)
+    @doc = Nokogiri::HTML(f, nil, 'utf-8')
+
   end
   def set_attribute(q, attr, value_str)
     ele = @doc.at_xpath(q)

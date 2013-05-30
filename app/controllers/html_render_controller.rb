@@ -39,7 +39,7 @@ class HtmlRenderController < ApplicationController
     @html_dir = params[:html_dir]
     @whole_num = params[:whole_num].to_i
     @num = Dir.entries(@html_dir).count - 2 # %w[. ..]
-    @progress = (100 * @num/@whole_num).to_i
+    @progress = 10 + (90 * @num/@whole_num).to_i
   end
   def download
     send_file params[:zip_path]
